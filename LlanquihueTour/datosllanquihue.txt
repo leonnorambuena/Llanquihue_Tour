@@ -1,0 +1,3 @@
+juan; 29.983.127-5; 
+jose; ; correo1@gmail.com
+Jaime; 23.351.332-5; correo2@correo1.cl
