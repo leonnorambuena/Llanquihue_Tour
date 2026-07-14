@@ -1,27 +1,63 @@
 # Llanquihue_Tour
-Proyecto Llanquihue Sumativa2
-ESTRUCTURA DE ARCHIVOS DEL PROYECTO:
+Proyecto Llanquihue Sumativa3
+
+## ESTRUCTURA DE ARCHIVOS DEL PROYECTO
+
 src/
 ├── data/
-│   └── Datos.java
+│   ├── GestorServicios.java
+│   └── GestorEntidades.java      
 ├── model/
-│   ├── Direccion.java
-│   └── Persona.java
-└── main/
+│   ├── ExcursionCultural.java
+│   ├── GuiaTuristico.java
+│   ├── Registrable.java          
+│   ├── PaseoLacustre.java        
+│   └── RutaGastronomica.java
+|   └── ServicioTuristico.java
+|   └── Vehiculo.java     
+└── ui/
     └── Main.java
 
 
 
-## Descripción del Sistema
-Aplicación de consola en Java que lee registros desde un archivo de texto plano. El sistema procesa la información del archivo, aplica validaciones para evitar campos vacíos en los atributos principales y cuenta con un filtro de búsqueda por RUT.
+Descripción del Sistema
+Aplicación de consola en Java que gestiona los servicios de Llanquihue Tour. El sistema permite:
 
-## Paquetes y Clases
-- Paquete model: Clase Persona.java y Clase Direccion.java para estructurar las entidades del sistema de forma independiente.
-- Paquete data: Clase Datos.java encargada de la lectura del archivo .txt y el procesamiento de las líneas de texto.
-- Paquete main: Clase Main.java que actúa como el motor principal, interactúa con el usuario y ejecuta las búsquedas.
+Leer registros de personas desde un archivo de texto plano con validaciones de campos vacíos.
+
+Buscar usuarios mediante un filtro por RUT.
+
+* Administrar de forma genérica diferentes entidades de la empresa (como Vehículos y Guías Turísticos) bajo un modelo polimórfico común (Registrable).
+
+* Generar reportes unificados identificando dinámicamente cada tipo de entidad para extraer sus datos específicos.
+
+Paquetes y Clases
+📦 Paquete model (Jerarquía y Reglas de Negocio)
+Registrable.java (Interfaz): Define el comportamiento común para los recursos de la empresa que requieren un registro básico, obligando a implementar el método mostrarResumen().
+
+GuiaTuristico.java y Vehiculo.java: Clases que implementan la interfaz Registrable. Representan los recursos físicos y humanos de la agencia.
+
+ServicioTuristico.java: Clase base (o abstracta) que define la estructura general de un servicio ofrecido por la agencia Llanquihue Tour.
+
+ExcursionCultural.java, PaseoLacustre.java y RutaGastronomica.java: Especializaciones de ServicioTuristico. Representan las distintas actividades turísticas que ofrece la empresa, cada una con sus propias reglas y atributos específicos.
+
+📦 Paquete data (Controladores y Gestión de Datos)
+GestorEntidades.java: Administra la colección de objetos de tipo Registrable (Vehículos y Guías). Utiliza lógica polimórfica e instanceof para procesar y listar de manera diferenciada estos recursos.
+
+GestorServicios.java: Clase encargada de almacenar, organizar y gestionar la oferta de servicios turísticos disponibles en la plataforma.
+
+📦 Paquete ui (Interfaz de Usuario)
+Main.java: Punto de entrada de la aplicación. Se encarga de pintar el menú en la terminal, capturar las interacciones del usuario y conectar la interfaz de consola con los gestores de datos.
+
+Registrable.java (Interfaz): Define el contrato base para cualquier elemento que deba ser incorporado en los reportes de la empresa, obligando a implementar el método mostrarResumen().
+GuiaTuristico.java: Implementa Registrable. Modela a los guías de turismo, incluyendo atributos específicos como los idiomas que manejan.
+Vehiculo.java: Implementa Registrable. Modela la flota de transporte de la empresa, almacenando su patente y capacidad de pasajeros.
+
 
 ## Instrucciones de Ejecución
+
 Coloque el archivo datosllanquihue.txt en la raíz del proyecto.
-Abra el proyecto en su IDE preferido (NetBeans, Eclipse o IntelliJ).
+
+Abra el proyecto en su IDE Netbeans.
 Diríjase al paquete main, haga clic derecho sobre Main.java y seleccione Ejecutar / Run File.
-Use la consola para interactuar con el sistema de búsqueda.
+Use el menú de la interfaz para interactuar con el sistema de búsqueda o para generar el reporte general de entidades de la empresa.
